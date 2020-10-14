@@ -1,0 +1,26 @@
+''' tk_countdown_ny.py
+countdown to New Year using Tkinter
+use update() after sleep()
+'''
+try:
+    # Python2
+    import Tkinter as tk
+except ImportError:
+    # Python3
+    import tkinter as tk
+import time 
+def countDown():
+    '''start countdown 10 seconds before new year starts'''
+    lbl.config(bg='yellow')
+    for k in range(10, -1, -1):
+        lbl["text"] = k
+        time.sleep(1)
+        root.update()  # Tk needs this after sleep()
+    lbl.config(bg='red')
+    lbl["text"] = "Happy new year!"
+root = tk.Tk()
+label_font = ('helvetica', 40)
+lbl = tk.Label(font=label_font)
+lbl.pack(fill='both', expand=1)
+countDown()
+root.mainloop()
